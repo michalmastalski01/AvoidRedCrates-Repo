@@ -108,6 +108,11 @@ public class PlayerController : MonoBehaviour
         transform.position = GetClampPlayerPosition();
     }
 
+    public void TriggerRoll()
+    {
+        animator.SetTrigger("triggerRoll");
+    }
+
     private Vector3 GetClampPlayerPosition()
     {
         return new Vector3(Mathf.Clamp(transform.position.x, -maxHorizontalPosition, maxHorizontalPosition), 0, Mathf.Clamp(transform.position.z, -maxVerticalPosition, maxVerticalPosition));

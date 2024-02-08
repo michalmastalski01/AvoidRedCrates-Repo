@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetActive(false);
         }
+        Application.targetFrameRate = 200;
     }
     public Wallet GetWallet()
     {
