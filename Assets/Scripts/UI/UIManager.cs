@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startScreen;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject gameScreen;
+    [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject skinPreviewModel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI scoreTextOnGameOver;
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         startScreen.SetActive(true);
+        pauseButton.SetActive(false);
         gameOverScreen.SetActive(false);
         gameScreen.SetActive(false);
         skinPreviewModel.SetActive(true);
@@ -54,7 +56,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void StartGame()
-    {
+    { 
+        pauseButton.SetActive(true);
         startScreen.SetActive(false);
         gameScreen.SetActive(true);
         skinPreviewModel.SetActive(false);

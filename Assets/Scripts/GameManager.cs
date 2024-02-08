@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             wallet.AddCoins(50);
         }
     }
-    private void TogglePause()
+    public void TogglePause()
     {
         ToggleSpawners(isPlaying);
         if (isPlaying)

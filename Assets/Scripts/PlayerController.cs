@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip deathAudioClip;
     [SerializeField] private GameObject footstepParticle;
 
+    public Joystick joystick;
+
     private float baseMovementSpeed;
     [SerializeField] private bool isPowerUpActive;
     private float powerUpTimer = 5;
@@ -90,8 +92,11 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleMovement()
     {
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        //float verticalInput = Input.GetAxisRaw("Vertical");
+        //float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        float verticalInput = joystick.Vertical;
+        float horizontalInput = joystick.Horizontal;
         
         Vector3 moveVector = new Vector3(horizontalInput, 0, verticalInput).normalized * movementSpeed;
         Vector3 moveVectorNormalized = new Vector3(moveVector.x * Time.deltaTime, 0, moveVector.z * Time.deltaTime);

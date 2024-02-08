@@ -32,7 +32,7 @@ public class ShopUI : MonoBehaviour
     }
     private void Update()
     {
-        coinAmountText.text = "Coins: " + GameManager.instance.GetWallet().coins;
+        coinAmountText.text = GameManager.instance.GetWallet().coins.ToString();
     }
     private void SkinShop_OnClick()
     {
@@ -41,7 +41,7 @@ public class ShopUI : MonoBehaviour
 
     private void SkinShop_OnBuySkin(SkinSO obj)
     {
-        coinAmountText.text = "Coins: " + GameManager.instance.GetWallet().coins;
+        coinAmountText.text = GameManager.instance.GetWallet().coins.ToString();
     }
 
     private void DestroyAndSpawnNewPreviewSkin()
