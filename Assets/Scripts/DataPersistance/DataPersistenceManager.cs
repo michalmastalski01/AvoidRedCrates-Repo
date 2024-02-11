@@ -34,7 +34,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        gameData = new GameData(0, 0, 0, new List<int>());
+        gameData = new GameData(0, 0, 0, new List<int>(), new List<int>());
     }
     private List<IDataPersistence> FindAllDataPersistentObjects()
     {

@@ -17,7 +17,7 @@ public class ItemUI : MonoBehaviour
     private SkinSO skinSO;
     private void Awake()
     {
-        SkinShop.Instance.OnClick += SkinShop_OnClick;
+        SkinShop.Instance.OnClick += OnClickEvent;
     }
     private void Start()
     {
@@ -25,27 +25,25 @@ public class ItemUI : MonoBehaviour
         {
             itemBackground.color = boughtColor;
         }
-        if(skinSO != null)
+        if (skinSO != null)
         {
             itemText.text = skinSO.skinName;
             costText.text = skinSO.skinCost.ToString();
         }
         SetRarityColor();
 
-        SkinShop.Instance.OnBuySkin += SkinShop_OnBuySkin;
+        SkinShop.Instance.OnBuySkin += OnBuySkinEvent;
     }
 
     public void SetSkinSO(SkinSO skinSO)
     {
         this.skinSO = skinSO;
     }
-
-    private void SkinShop_OnClick()
+    private void OnClickEvent()
     {
         HighlightItemUI();
     }
-
-    private void SkinShop_OnBuySkin(SkinSO currentSkinSO)
+    private void OnBuySkinEvent(SkinSO currentSkinSO)
     {
         if(currentSkinSO == skinSO)
         {
@@ -55,25 +53,27 @@ public class ItemUI : MonoBehaviour
 
     private void SetRarityColor()
     {
-        switch (skinSO.rarityLevel)
+        if(skinSO != null)
         {
-            case Rarity.RarityLevel.Common:
-                rarityText.text = Rarity.RarityLevel.Common.ToString();
-                rarityUnderlineColorBar.color = Color.gray;
-                break;
-            case Rarity.RarityLevel.Uncommon:
-                rarityText.text = Rarity.RarityLevel.Uncommon.ToString();
-                rarityUnderlineColorBar.color = Color.blue;
-                break;
-            case Rarity.RarityLevel.Rare:
-                rarityText.text = Rarity.RarityLevel.Rare.ToString();
-                rarityUnderlineColorBar.color = Color.magenta;
-                break;
-            case Rarity.RarityLevel.UltraRare:
-                rarityText.text = Rarity.RarityLevel.UltraRare.ToString();
-                rarityUnderlineColorBar.color = Color.yellow;
-                break;
-
+            switch (skinSO.rarityLevel)
+            {
+                case Rarity.RarityLevel.Common:
+                    rarityText.text = Rarity.RarityLevel.Common.ToString();
+                    rarityUnderlineColorBar.color = Color.gray;
+                    break;
+                case Rarity.RarityLevel.Uncommon:
+                    rarityText.text = Rarity.RarityLevel.Uncommon.ToString();
+                    rarityUnderlineColorBar.color = Color.blue;
+                    break;
+                case Rarity.RarityLevel.Rare:
+                    rarityText.text = Rarity.RarityLevel.Rare.ToString();
+                    rarityUnderlineColorBar.color = Color.magenta;
+                    break;
+                case Rarity.RarityLevel.UltraRare:
+                    rarityText.text = Rarity.RarityLevel.UltraRare.ToString();
+                    rarityUnderlineColorBar.color = Color.yellow;
+                    break;
+            }
         }
     }
 

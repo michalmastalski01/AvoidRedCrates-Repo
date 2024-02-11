@@ -8,6 +8,8 @@ public class Wallet : MonoBehaviour,  IDataPersistence
 
     public List<SkinSO> boughtSkinsList { get; private set; } = new List<SkinSO>();
 
+    public List<UpgradeSO> boughtUpgradesList { get; private set; } = new List<UpgradeSO>();
+
     public int highScore { get; private set; }
 
     public int currentSkinId { get; private set; }
@@ -29,6 +31,10 @@ public class Wallet : MonoBehaviour,  IDataPersistence
     {
         boughtSkinsList.Add(skinSO);
     }
+    public void AddUpgrade(UpgradeSO upgradeSO)
+    {
+        boughtUpgradesList.Add(upgradeSO);
+    }
     public bool TrySetHighScore(int score)
     {
         if(score > highScore)
@@ -41,17 +47,6 @@ public class Wallet : MonoBehaviour,  IDataPersistence
     public void SetCurrentSkinId(int newCurrentSkinId)
     {
         currentSkinId = newCurrentSkinId;
-    }
-    private void ClearBoughtSkinList()
-    {
-        boughtSkinsList.Clear();
-    }
-    public void ShowListOfBoughtSkins()
-    {
-        foreach (SkinSO skinSO in boughtSkinsList)
-        {
-            //Debug.Log(skinSO.skinName);
-        }
     }
 
     public void LoadData(GameData gameData)
@@ -72,6 +67,15 @@ public class Wallet : MonoBehaviour,  IDataPersistence
                 SkinShop.Instance.SetCurrentSkinSO(skinSO);
             }
         }
+
+        List<UpgradeSO> upgradeList = UpgradeShop.Instance.GetUpgradeSOList();
+        foreach (UpgradeSO upgradeSO in upgradeList)
+        {
+            if (gameData.boughtUpgradeIds.Contains(upgradeSO.id))
+            {
+                AddUpgrade(upgradeSO);
+            }
+        }
     }
 
     public void SaveData(ref GameData gameData)
@@ -80,10 +84,15 @@ public class Wallet : MonoBehaviour,  IDataPersistence
         gameData.highScore = highScore;
         gameData.currentSkinId = currentSkinId;
         gameData.boughtSkinIds.Clear();
+        gameData.boughtUpgradeIds.Clear();
 
         foreach (SkinSO skinSO in boughtSkinsList)
         {
             gameData.boughtSkinIds.Add(skinSO.id);
+        }
+        foreach (UpgradeSO upgradeSO in boughtUpgradesList)
+        {
+            gameData.boughtUpgradeIds.Add(upgradeSO.id);
         }
     }
 }

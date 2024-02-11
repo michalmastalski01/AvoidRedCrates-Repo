@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] private AudioClip deathAudioClip;
     [SerializeField] private GameObject footstepParticle;
+    [SerializeField] private Transform gamePlane;
 
     public Joystick joystick;
 
@@ -115,6 +116,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetClampPlayerPosition()
     {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);   
+        Debug.Log(mousePosition);
+
         return new Vector3(Mathf.Clamp(transform.position.x, -maxHorizontalPosition, maxHorizontalPosition), 0, Mathf.Clamp(transform.position.z, -maxVerticalPosition, maxVerticalPosition));
     }
 
