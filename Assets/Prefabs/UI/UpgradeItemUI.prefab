@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 6720746767120325082}
   - component: {fileID: 718904518877251455}
   m_Layer: 5
-  m_Name: RarityText
+  m_Name: ItemDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemText: {fileID: 5568439370359088349}
   costText: {fileID: 2000122044739219937}
-  rarityText: {fileID: 718904518877251455}
+  itemDescriptionText: {fileID: 718904518877251455}
   itemBackground: {fileID: 4131848426676180852}
   rarityUnderlineColorBar: {fileID: 3454975258419154450}
   highlightBorder: {fileID: 3702916176909992726}

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   upgradeName: Roll
+  upgradeDescription: Player can roll
+  upgradeType: 0
   upgradeIcon: {fileID: 21300000, guid: c60431f79e05a4429a71944e85b71021, type: 3}
-  upgradeCost: 250
+  upgradeCost: 50

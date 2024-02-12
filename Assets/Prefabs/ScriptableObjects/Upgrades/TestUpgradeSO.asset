@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TestUpgradeSO
   m_EditorClassIdentifier: 
   id: 1
-  upgradeName: Test
+  upgradeName: Movement Boost I
+  upgradeDescription: Player moves a bit faster
+  upgradeType: 1
   upgradeIcon: {fileID: 21300000, guid: 026471bee25e945eb921274aa76e22d0, type: 3}
-  upgradeCost: 5
+  upgradeCost: 25

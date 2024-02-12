@@ -8,7 +8,7 @@ public class UpgradeItemUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private TextMeshProUGUI costText;
-    [SerializeField] private TextMeshProUGUI rarityText;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private Image itemBackground;
     [SerializeField] private Image rarityUnderlineColorBar;
     [SerializeField] private GameObject highlightBorder;
@@ -29,6 +29,7 @@ public class UpgradeItemUI : MonoBehaviour
         {
             itemText.text = upgradeSO.upgradeName;
             costText.text = upgradeSO.upgradeCost.ToString();
+            itemDescriptionText.text = upgradeSO.upgradeDescription.ToString();
         }
         UpgradeShop.Instance.OnBuyUpgrade += OnBuySkinEvent;
     }

@@ -7,18 +7,22 @@ using TMPro;
 public class SettingsButtons : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] qualityButtons;
+    [SerializeField] public Color activeColor = new Color();
+    [SerializeField] public Color disableColor = new Color();
 
     public void OnQualityChange()
     {
+        Debug.Log("Active color: " + activeColor);
+        Debug.Log("Disbale color:  " + disableColor);
         foreach(TextMeshProUGUI qualityButton in qualityButtons)
         {
             if (qualityButton.text == SettingsScreen.Instance.GetCurrentQualitySettings().ToString())
             {
-                qualityButton.color = Color.gray;
+                qualityButton.color = activeColor;
             }
             else
             {
-                qualityButton.color = Color.white;
+                qualityButton.color = disableColor;
             }
         }
     }
