@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpName: Time Speed Up
   powerUpSprite: {fileID: 21300000, guid: 82f406023e785ab44a5752a682fd4063, type: 3}
-  powerUpColor: {r: 1, g: 0.53872955, b: 0, a: 1}
+  powerUpColor: {r: 0.8867924, g: 0.59644413, b: 0.25934485, a: 1}
   powerUpType: 1
   powerUpDuration: 10

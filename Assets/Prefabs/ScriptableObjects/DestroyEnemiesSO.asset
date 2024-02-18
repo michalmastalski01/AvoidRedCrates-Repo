@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpName: Destroy Enemies
   powerUpSprite: {fileID: 21300000, guid: a25beab5a3161ce4a9dbb52916e7c1b8, type: 3}
-  powerUpColor: {r: 0.46619368, g: 1, b: 0, a: 1}
+  powerUpColor: {r: 0.5735706, g: 0.8867924, b: 0.2995015, a: 1}
   powerUpType: 2
   powerUpDuration: 2

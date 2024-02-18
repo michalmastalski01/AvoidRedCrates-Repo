@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip buttonClickAudioClip;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject defaultPlayerSkin;
+    [SerializeField] private List<GameObject> enviromentObjects;
 
     [SerializeField] private GameObject[] spawners;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         isPlaying = false;
         wallet = GetComponent<Wallet>();
+        SetEnviromentActive(false);
     }
 
     private void Start()
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
         SetSkin();
         OnStart?.Invoke();
         ToggleSpawners(isPlaying);
+        SetEnviromentActive(true);
         SoundManager.Instance.PlaySound(buttonClickAudioClip);
         UIManager.Instance.StartGame();
         Time.timeScale = 1f;
@@ -128,5 +131,13 @@ public class GameManager : MonoBehaviour
             Instantiate(defaultPlayerSkin, player.transform);
         }
         player.GetComponent<PlayerController>().animator = player.GetComponentInChildren<Animator>();
+    }
+
+    private void SetEnviromentActive(bool isActive)
+    {
+        foreach (GameObject enviromentObject in enviromentObjects)
+        {
+            enviromentObject.SetActive(isActive);
+        }
     }
 }

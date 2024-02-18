@@ -23,8 +23,14 @@ public class UpgradeManger : MonoBehaviour
         {
             switch(upgradeSO.upgradeType) 
             {
-                case UpgradeType.MovementBoost:
+                case UpgradeType.MovementBoostI:
                     EnableMovementBoostI();
+                    break;
+                case UpgradeType.MovementBoostII:
+                    EnableMovementBoostII();
+                    break;
+                case UpgradeType.MovementBoostIII:
+                    EnableMovementBoostIII();
                     break;
                 case UpgradeType.Roll:
                     EnableRoll();
@@ -36,6 +42,14 @@ public class UpgradeManger : MonoBehaviour
     private void EnableMovementBoostI()
     {
         PlayerController.Instance.SetMovementSpeed(PlayerController.Instance.GetBaseMovementSpeed() + 1);
+    }
+    private void EnableMovementBoostII()
+    {
+        PlayerController.Instance.SetMovementSpeed(PlayerController.Instance.GetBaseMovementSpeed() + 2);
+    }
+    private void EnableMovementBoostIII()
+    {
+        PlayerController.Instance.SetMovementSpeed(PlayerController.Instance.GetBaseMovementSpeed() + 3);
     }
 
     private void EnableRoll()

@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 4971130157289717642}
   - component: {fileID: 5309828261903251540}
   - component: {fileID: 1001666555585858308}
+  - component: {fileID: 2847695091774612000}
   m_Layer: 5
   m_Name: CoinIcon
   m_TagString: Untagged
@@ -150,6 +151,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2847695091774612000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2907809456924086070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3229647482336789307
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,8 +233,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Red skin
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
-  m_sharedMaterial: {fileID: -8262664332550103233, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
+  m_sharedMaterial: {fileID: 1264248480121861062, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -377,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -611,8 +627,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 25
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
-  m_sharedMaterial: {fileID: -8262664332550103233, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
+  m_sharedMaterial: {fileID: 1264248480121861062, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -636,8 +652,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -820,8 +836,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Common
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
-  m_sharedMaterial: {fileID: -8262664332550103233, guid: 3629c906d3030b7468b75fb27b1c3e5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
+  m_sharedMaterial: {fileID: 1264248480121861062, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1080,4 +1096,4 @@ MonoBehaviour:
   itemBackground: {fileID: 4131848426676180852}
   rarityUnderlineColorBar: {fileID: 3454975258419154450}
   highlightBorder: {fileID: 3702916176909992726}
-  boughtColor: {r: 0.49411765, g: 0.6666667, b: 0.57254905, a: 1}
+  boughtColor: {r: 1, g: 1, b: 1, a: 0.19607843}

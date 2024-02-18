@@ -5,7 +5,9 @@ using UnityEngine;
 public enum UpgradeType
 {
     Roll,
-    MovementBoost
+    MovementBoostI,
+    MovementBoostII,
+    MovementBoostIII
     //You can add more upgradeTypes.
 }
 
