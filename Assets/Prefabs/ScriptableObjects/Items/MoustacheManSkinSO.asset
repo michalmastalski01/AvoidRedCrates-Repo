@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
   m_Name: MoustacheManSkinSO
   m_EditorClassIdentifier: 
-  id: 2
+  id: 3
   skinName: Moustache Man
   skinPrefab: {fileID: 7419034765064290190, guid: 3675c4722a5088441b09e159f0343432, type: 3}
   skinCost: 100

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 537b7ae7a7488d742926caba38fa88cc, type: 3}
-  m_Name: RollUpgradeSO
+  m_Name: MegaCoinSpawnRateUpgrade1SO
   m_EditorClassIdentifier: 
-  id: 0
-  upgradeName: Roll
-  upgradeDescription: Player can roll
-  upgradeType: 0
-  upgradeIcon: {fileID: 21300000, guid: c60431f79e05a4429a71944e85b71021, type: 3}
-  upgradeCost: 150
+  id: 4
+  upgradeName: Mega Coin I
+  upgradeDescription: Increasing chance to spawn mega coin to 7%
+  upgradeType: 4
+  upgradeIcon: {fileID: 21300000, guid: 69c656687670ef442a81e762c14f1d37, type: 3}
+  upgradeCost: 200

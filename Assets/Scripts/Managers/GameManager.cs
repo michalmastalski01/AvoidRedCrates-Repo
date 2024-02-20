@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused;
     private bool isPlaying;
+    private bool canRevive;
+
 
     public event Action<bool> OnPauseToggle;
     public event Action OnStart;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         isPlaying = false;
+        canRevive = true;
         wallet = GetComponent<Wallet>();
         SetEnviromentActive(false);
     }
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetActive(false);
         }
-        Application.targetFrameRate = 200;
+        Application.targetFrameRate = 240;
     }
     public Wallet GetWallet()
     {
@@ -58,6 +61,12 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetActive(isPlaying);
         }
+    }
+
+    //Delete this method when build. Its only for testing!
+    public void AddMoney(int amount)
+    {
+        GetWallet().AddCoins(amount);
     }
 
     private void Update()
@@ -108,13 +117,34 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.StartGame();
         Time.timeScale = 1f;
     }
+
+    public void StartGameWhenPlayerRevive()
+    {
+        GetWallet().SubtractCoins(25);
+
+        isPlaying = true;
+        OnStart?.Invoke();
+        UIManager.Instance.StartGame();
+        ToggleSpawners(isPlaying);
+        Time.timeScale = 1f;
+    }
     public void GameOver()
     {
+        PowerUpManager.Instance.EndActivePowerUp();
         isPlaying = false;
         OnGameOver?.Invoke();
+        Time.timeScale = 0;
+
+        if (canRevive && GetWallet().coins >= 25)
+        {
+            UIManager.Instance.SetReviveScreen(true);
+            canRevive = false;
+            return;
+        }
+
+        UIManager.Instance.SetReviveScreen(false);
         wallet.AddCoins(PlayerController.Instance.GetScorePoints());
         wallet.TrySetHighScore(PlayerController.Instance.GetScorePoints());
-        Time.timeScale = 0;
     }
 
     private void SetSkin()

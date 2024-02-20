@@ -35,6 +35,12 @@ public class UpgradeManger : MonoBehaviour
                 case UpgradeType.Roll:
                     EnableRoll();
                     break;
+                case UpgradeType.MegaCoinI:
+                    CoinSpawner.Instance.ChangeProbability(CoinType.mega, 7);
+                    break;
+                case UpgradeType.MegaCoinII:
+                    CoinSpawner.Instance.ChangeProbability(CoinType.mega, 10);
+                    break;
             }
         }
     }

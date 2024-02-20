@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.instance.GameOver();
+            gameObject.SetActive(false);
         }
     }
 

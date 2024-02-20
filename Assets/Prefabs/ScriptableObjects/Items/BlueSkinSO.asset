@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
   m_Name: BlueSkinSO
   m_EditorClassIdentifier: 
-  id: 1
+  id: 2
   skinName: Blue skin
   skinPrefab: {fileID: 2354862147818211323, guid: 49bc197ea8ce74940babdc831ed936a9, type: 3}
   skinCost: 50

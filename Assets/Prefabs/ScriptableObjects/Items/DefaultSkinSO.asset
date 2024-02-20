@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
-  m_Name: RedSkinSO
+  m_Name: DefaultSkinSO
   m_EditorClassIdentifier: 
-  id: 1
-  skinName: Red skin
-  skinPrefab: {fileID: 2354862147818211323, guid: a32a91071ff66114ea057ab4dc89d959, type: 3}
-  skinCost: 25
+  id: 0
+  skinName: Default
+  skinPrefab: {fileID: 2354862147818211323, guid: 331c0c8b884b4b244bf823e1241b8aee, type: 3}
+  skinCost: 0
   rarityLevel: 0

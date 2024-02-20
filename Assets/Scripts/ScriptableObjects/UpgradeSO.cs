@@ -7,7 +7,9 @@ public enum UpgradeType
     Roll,
     MovementBoostI,
     MovementBoostII,
-    MovementBoostIII
+    MovementBoostIII,
+    MegaCoinI,
+    MegaCoinII
     //You can add more upgradeTypes.
 }
 

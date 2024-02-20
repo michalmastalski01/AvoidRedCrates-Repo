@@ -62,6 +62,7 @@ public class PowerUpManager : MonoBehaviour
             case PowerUp.PowerUpType.AttractCoins:
                 AttractCoins();
                 break;
+            default: break;
         }
 
         if (powerUpTimer < 0)
@@ -94,7 +95,7 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    private void EndActivePowerUp()
+    public void EndActivePowerUp()
     {
         Time.timeScale = 1f;
         isPowerUpActive = false;

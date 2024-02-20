@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private void GameManager_OnGameOver()
     {
         SoundManager.Instance.PlaySound(deathAudioClip);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void Update()
@@ -127,9 +127,9 @@ public class PlayerController : MonoBehaviour
         return scorePoints; 
     }
 
-    public void AddPoint()
+    public void AddPoint(int amount)
     {
-        scorePoints++;
+        scorePoints += amount;
     }
 
     public void SetMovementSpeed(float movementSpeed)

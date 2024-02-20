@@ -5,21 +5,23 @@ using TMPro;
 
 public class FPSMeter : MonoBehaviour
 {
+    [SerializeField] private float refreshRate;
     private TextMeshProUGUI fpsMeterText;
-    private float refreshRate = 0.2f;
+    private float rate;
 
     private void Start()
     {
+        rate = refreshRate;
         fpsMeterText = GetComponent<TextMeshProUGUI>();
     }
     private void Update()
     {
-        refreshRate -= Time.deltaTime;
+        rate -= Time.deltaTime;
 
-        if(refreshRate < 0)
+        if(rate < 0)
         {
             fpsMeterText.text = ((int)(1f / Time.deltaTime)).ToString();
-            refreshRate = 0.2f;
+            rate = refreshRate;
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
   m_Name: MissWildWestSkinSO
   m_EditorClassIdentifier: 
-  id: 5
+  id: 6
   skinName: Miss Wild West
   skinPrefab: {fileID: 4955336851227942676, guid: e8f80617dc74f9a4f944715c59667448, type: 3}
   skinCost: 1000

@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] GameObject coinParticle;
     [SerializeField] AudioClip pickUpSoundClip;
+    [SerializeField] int amountCoinsToAdd;
 
     private void Update()
     {
@@ -17,7 +18,7 @@ public class Coin : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             CreateBreakingParticle();
-            PlayerController.Instance.AddPoint();
+            PlayerController.Instance.AddPoint(amountCoinsToAdd);
             Destroy(this.gameObject);
             SoundManager.Instance.PlaySound(pickUpSoundClip);
         }

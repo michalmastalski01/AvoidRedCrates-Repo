@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
   m_Name: BadWomanSkinSO
   m_EditorClassIdentifier: 
-  id: 4
+  id: 5
   skinName: Bad Woman
   skinPrefab: {fileID: 3330438578250355898, guid: fc3e634fa2d7440468ba73954b7abbd0, type: 3}
   skinCost: 300

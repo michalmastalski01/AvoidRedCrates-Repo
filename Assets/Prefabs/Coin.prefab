@@ -71,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinParticle: {fileID: 678552340687101257, guid: b99a7f8a68014414ea1dc4c96c5176de, type: 3}
   pickUpSoundClip: {fileID: 8300000, guid: 26278c87da35799429789ea29b360202, type: 3}
+  amountCoinsToAdd: 1
 --- !u!1001 &513381310169010758
 PrefabInstance:
   m_ObjectHideFlags: 0
