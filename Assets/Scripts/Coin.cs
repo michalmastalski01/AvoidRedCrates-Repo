@@ -21,6 +21,7 @@ public class Coin : MonoBehaviour
             PlayerController.Instance.AddPoint(amountCoinsToAdd);
             Destroy(this.gameObject);
             SoundManager.Instance.PlaySound(pickUpSoundClip);
+            UIManager.Instance.AddCoinInfo(amountCoinsToAdd);
         }
     }
     private void CreateBreakingParticle()

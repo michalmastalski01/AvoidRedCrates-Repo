@@ -48,6 +48,7 @@ public class SkinShop : MonoBehaviour
         {
             if (!wallet.boughtSkinsList.Contains(GetCurrentSkinSO()))
             {
+                SoundManager.Instance.PlayClickSound();
                 wallet.SubtractCoins(currentSkinSO.skinCost);
                 wallet.AddSkin(currentSkinSO);
                 OnBuySkin?.Invoke(GetCurrentSkinSO());
@@ -62,6 +63,7 @@ public class SkinShop : MonoBehaviour
     public void SetCurrentSkinSO(SkinSO skinSO)
     {
         currentSkinSO = skinSO;
+        SoundManager.Instance.PlayClickSound();
         OnClick?.Invoke();
     }
 

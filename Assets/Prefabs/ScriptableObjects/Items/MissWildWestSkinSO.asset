@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MissWildWestSkinSO
   m_EditorClassIdentifier: 
   id: 6
-  skinName: Miss Wild West
+  skinName: Miss West
   skinPrefab: {fileID: 4955336851227942676, guid: e8f80617dc74f9a4f944715c59667448, type: 3}
   skinCost: 1000
   rarityLevel: 3

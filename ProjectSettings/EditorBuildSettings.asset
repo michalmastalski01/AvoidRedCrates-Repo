@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/1.unity
+    guid: 42c4baa4592d4b54797337b23907f1a8
+  - enabled: 0
+    path: Assets/IronSource/DemoScene/IronSourceDemo.unity
+    guid: ccc0ac08126704384bdda74c26d99797
   m_configObjects: {}

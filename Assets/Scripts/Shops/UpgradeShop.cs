@@ -30,6 +30,7 @@ public class UpgradeShop : MonoBehaviour
         {
             if (!wallet.boughtUpgradesList.Contains(GetCurrentUpgradeSO()))
             {
+                SoundManager.Instance.PlayClickSound();
                 wallet.SubtractCoins(currentUpgradeSO.upgradeCost);
                 wallet.AddUpgrade(currentUpgradeSO);
                 OnBuyUpgrade?.Invoke(GetCurrentUpgradeSO());
@@ -39,6 +40,7 @@ public class UpgradeShop : MonoBehaviour
 
     public void SetCurrentUpgradeSO(UpgradeSO upgradeSO)
     {
+        SoundManager.Instance.PlayClickSound();
         currentUpgradeSO = upgradeSO;
         OnClick?.Invoke();
     }

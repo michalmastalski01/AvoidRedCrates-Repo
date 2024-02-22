@@ -5,7 +5,7 @@ using TMPro;
 
 public class CoinAmountText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI coinAmountText;
+    [SerializeField] private TextMeshProUGUI coinAmountTextt;
 
     private float coinAmount;
     private void Start()
@@ -16,7 +16,7 @@ public class CoinAmountText : MonoBehaviour
     {
         if(this.enabled)
         {
-            coinAmountText.text = coinAmount.ToString();
+            coinAmountTextt.text = coinAmount.ToString();
         }
     }
 }

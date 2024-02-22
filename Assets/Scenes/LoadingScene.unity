@@ -252,8 +252,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
-  m_sharedMaterial: {fileID: 1264248480121861062, guid: aac9cec6a7471554ab21cff6ca42d99e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80da540bc2dcb994d831389e99823c33, type: 2}
+  m_sharedMaterial: {fileID: -8716793397265741947, guid: 80da540bc2dcb994d831389e99823c33, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -364,7 +364,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.12647206, g: 0.2926161, b: 0.3509434, a: 1}
+  m_BackGroundColor: {r: 0.08235294, g: 0.38039216, b: 0.42745098, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

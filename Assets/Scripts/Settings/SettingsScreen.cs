@@ -28,7 +28,9 @@ public class SettingsScreen : MonoBehaviour, IDataPersistence
 
     public void SetCurrentQualityLevel(int qualityId)
     {
-        if(qualityId > 2)
+        SoundManager.Instance.PlayClickSound();
+
+        if (qualityId > 2)
         {
             return;
         }

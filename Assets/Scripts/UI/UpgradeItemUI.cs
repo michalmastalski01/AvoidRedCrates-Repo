@@ -31,7 +31,7 @@ public class UpgradeItemUI : MonoBehaviour
             costText.text = upgradeSO.upgradeCost.ToString();
             itemDescriptionText.text = upgradeSO.upgradeDescription.ToString();
         }
-        UpgradeShop.Instance.OnBuyUpgrade += OnBuySkinEvent;
+        UpgradeShop.Instance.OnBuyUpgrade += OnBuyUpgradeEvent;
     }
 
     public void SetUpgradeSO(UpgradeSO upgradeSO)
@@ -42,7 +42,7 @@ public class UpgradeItemUI : MonoBehaviour
     {
         HighlightItemUI();
     }
-    private void OnBuySkinEvent(UpgradeSO currentUpgradeSO)
+    private void OnBuyUpgradeEvent(UpgradeSO currentUpgradeSO)
     {
         if (currentUpgradeSO == upgradeSO)
         {

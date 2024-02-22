@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Range(0, 1)] private float globalVolume;
     [SerializeField, Range(0, 1)] private float footstepsVolume;
     [SerializeField] AudioSource musicAudioSource;
+    [SerializeField] AudioClip clickSound;
 
     public event Action OnMuteSoundChange;
     public event Action OnMuteMusicChange;
@@ -51,13 +52,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayClickSound()
+    {
+        if (!isMutedSound)
+        {
+            audioSource.PlayOneShot(clickSound, globalVolume);
+        }
+    }
+
     public void ToggleMuteSounds()
     {
+        PlayClickSound();
         isMutedSound = !isMutedSound;
         OnMuteSoundChange?.Invoke();
     }
     public void ToggleMuteMusic()
     {
+        PlayClickSound();
         isMutedMusic = !isMutedMusic;
         OnMuteMusicChange?.Invoke();
         MuteMusic();

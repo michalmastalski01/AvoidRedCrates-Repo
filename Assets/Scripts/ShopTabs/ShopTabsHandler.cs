@@ -22,6 +22,7 @@ public class ShopTabsHandler : MonoBehaviour
     public void SetCurrentOpenTab(ShopTab shopTab)
     {
         currentOpenTab = shopTab;
+        SoundManager.Instance.PlayClickSound();
         OnTabClick?.Invoke();
     }
     public ShopTab GetCurrentOpenTab()

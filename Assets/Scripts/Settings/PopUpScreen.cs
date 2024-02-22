@@ -19,6 +19,7 @@ public class PopUpScreen : MonoBehaviour
     public void ToggleScreen()
     {
         isVisible = !isVisible;
+        SoundManager.Instance.PlayClickSound();
 
         if (isVisible)
         {

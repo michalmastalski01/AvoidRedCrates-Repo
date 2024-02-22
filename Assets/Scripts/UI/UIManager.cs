@@ -20,6 +20,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private AudioClip buttonClickAudioClip;
 
+    [Header("Game:")]
+    [SerializeField] private GameObject addingCoinTextPrefab;
+    [SerializeField] private RectTransform addingCoinTextPosition;
+
     private bool isPaused = false;
 
     private void Awake()
@@ -52,7 +56,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: " + PlayerController.Instance.GetScorePoints();
+        scoreText.text = PlayerController.Instance.GetScorePoints().ToString();
         highScoreText.text = "High Score: " + GameManager.instance.GetWallet().highScore.ToString();
     }
 
@@ -63,6 +67,13 @@ public class UIManager : MonoBehaviour
         gameScreen.SetActive(true);
         skinPreviewModel.SetActive(false);
         gameOverScreen.SetActive(false);
+    }
+
+    public void AddCoinInfo(int amount)
+    {
+        GameObject addText = Instantiate(addingCoinTextPrefab, addingCoinTextPosition);
+        addText.GetComponentInChildren<TextMeshProUGUI>().text = "+" + amount;
+        addText.GetComponent<Animator>().SetTrigger("trigger");
     }
 
     public void SetReviveScreen(bool toggle)

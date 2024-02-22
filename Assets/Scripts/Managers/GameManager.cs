@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
 
-    [SerializeField] private AudioClip buttonClickAudioClip;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject defaultPlayerSkin;
     [SerializeField] private List<GameObject> enviromentObjects;
@@ -68,21 +67,10 @@ public class GameManager : MonoBehaviour
     {
         GetWallet().AddCoins(amount);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePause();
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            wallet.AddCoins(50);
-        }
-    }
     public void TogglePause()
     {
         ToggleSpawners(isPlaying);
+        SoundManager.Instance.PlayClickSound();
         if (isPlaying)
         {
             isPaused = !isPaused;
@@ -97,7 +85,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         DataPersistenceManager.Instance.SaveGame();
-        SoundManager.Instance.PlaySound(buttonClickAudioClip);
+        SoundManager.Instance.PlayClickSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -113,15 +101,14 @@ public class GameManager : MonoBehaviour
         OnStart?.Invoke();
         ToggleSpawners(isPlaying);
         SetEnviromentActive(true);
-        SoundManager.Instance.PlaySound(buttonClickAudioClip);
+        SoundManager.Instance.PlayClickSound();
         UIManager.Instance.StartGame();
         Time.timeScale = 1f;
     }
 
     public void StartGameWhenPlayerRevive()
     {
-        GetWallet().SubtractCoins(25);
-
+        SoundManager.Instance.PlayClickSound();
         isPlaying = true;
         OnStart?.Invoke();
         UIManager.Instance.StartGame();
@@ -135,7 +122,7 @@ public class GameManager : MonoBehaviour
         OnGameOver?.Invoke();
         Time.timeScale = 0;
 
-        if (canRevive && GetWallet().coins >= 25)
+        if (canRevive)
         {
             UIManager.Instance.SetReviveScreen(true);
             canRevive = false;

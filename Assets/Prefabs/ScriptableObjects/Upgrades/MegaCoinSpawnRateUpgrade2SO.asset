@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   upgradeName: Mega Coin II
-  upgradeDescription: Increasing chance to spawn mega coin to 10%
+  upgradeDescription: Increases chance to spawn mega coin to 10%
   upgradeType: 5
   upgradeIcon: {fileID: 21300000, guid: b8467ea5fbaf9ba42908de6411bd443d, type: 3}
   upgradeCost: 500
