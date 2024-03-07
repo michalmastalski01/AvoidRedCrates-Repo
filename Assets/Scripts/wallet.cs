@@ -14,6 +14,9 @@ public class Wallet : MonoBehaviour,  IDataPersistence
 
     public int currentSkinId { get; private set; }
 
+    public bool isMusicOn { get; private set; }
+    public bool isSoundOn { get; private set; }
+
 
     public void AddCoins(int coinsToAdd)
     {
@@ -23,6 +26,15 @@ public class Wallet : MonoBehaviour,  IDataPersistence
     {
         coins = coinsToSet;
     }
+    public void ToggleMusic()
+    {
+        isMusicOn = !isMusicOn;
+    }
+    public void ToggleSound()
+    {
+        isSoundOn = !isSoundOn;
+    }
+
     public void SubtractCoins(int coinsToSubtract)
     {
         coins -= coinsToSubtract;
@@ -54,6 +66,8 @@ public class Wallet : MonoBehaviour,  IDataPersistence
         SetCoins(gameData.coins);
         SetCurrentSkinId(gameData.currentSkinId);
         TrySetHighScore(gameData.highScore);
+        isMusicOn = gameData.isMusicOn;
+        isSoundOn = gameData.isSoundOn;
 
         List<SkinSO> skinList = SkinShop.Instance.GetSkinSOList();
         foreach (SkinSO skinSO in skinList)
@@ -61,10 +75,6 @@ public class Wallet : MonoBehaviour,  IDataPersistence
             if (gameData.boughtSkinIds.Contains(skinSO.id))
             {
                 AddSkin(skinSO);
-            }
-            if (gameData.currentSkinId == skinSO.id)
-            {
-                SkinShop.Instance.SetCurrentSkinSO(skinSO);
             }
         }
 
@@ -85,6 +95,8 @@ public class Wallet : MonoBehaviour,  IDataPersistence
         gameData.currentSkinId = currentSkinId;
         gameData.boughtSkinIds.Clear();
         gameData.boughtUpgradeIds.Clear();
+        gameData.isMusicOn = isMusicOn;
+        gameData.isSoundOn = isSoundOn;
 
         foreach (SkinSO skinSO in boughtSkinsList)
         {

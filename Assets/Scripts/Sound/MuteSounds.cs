@@ -12,13 +12,13 @@ public class MuteSounds : MonoBehaviour
     [SerializeField] private Image muteSoundButtonImage;
     [SerializeField] private Image muteMusicButtonImage;
 
-    private bool isMutedSound = false;
-    private bool isMutedMusic = false;
 
     private void Start()
     {
         SoundManager.Instance.OnMuteMusicChange += SoundManager_OnMuteMusicChange;
         SoundManager.Instance.OnMuteSoundChange += SoundManager_OnMuteSoundChange;
+        MuteSound();
+        MuteMusic();
     }
 
     private void SoundManager_OnMuteSoundChange()
@@ -33,12 +33,11 @@ public class MuteSounds : MonoBehaviour
 
     public void MuteSound()
     {
-        isMutedSound = !isMutedSound;
         UpdateMuteSoundButtonImage();
     }
     private void UpdateMuteSoundButtonImage()
     {
-        if (isMutedSound)
+        if (!GameManager.instance.GetWallet().isSoundOn)
         {
             muteSoundButtonImage.sprite = soundOffSprite;
         }
@@ -50,12 +49,11 @@ public class MuteSounds : MonoBehaviour
 
     public void MuteMusic()
     {
-        isMutedMusic = !isMutedMusic;
         UpdateMuteMusicButtonImage();
     }
     private void UpdateMuteMusicButtonImage()
     {
-        if (isMutedMusic)
+        if (!GameManager.instance.GetWallet().isMusicOn)
         {
             muteMusicButtonImage.sprite = musicOffSprite;
         }

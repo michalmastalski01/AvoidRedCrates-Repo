@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> enviromentObjects;
 
     [SerializeField] private GameObject[] spawners;
+    [SerializeField] private GameObject counter;
 
     private bool isPaused;
     private bool isPlaying;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         isPlaying = false;
         canRevive = true;
+        counter.SetActive(false);
         wallet = GetComponent<Wallet>();
         SetEnviromentActive(false);
     }
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
         {
             spawner.SetActive(false);
         }
-        Application.targetFrameRate = 240;
+        Application.targetFrameRate = 120;
     }
     public Wallet GetWallet()
     {
@@ -89,6 +91,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void OnApplicationFocus(bool focus)
+    {
+#if UNITY_ANDROID
+        if(!focus)
+        {
+            DateTime notificationDate = DateTime.Now.AddHours(1);
+            AndroidNotificationHandler.Instance.ScheduleNotification(notificationDate);
+
+            notificationDate = DateTime.Now.AddHours(12);
+            AndroidNotificationHandler.Instance.ScheduleNotification(notificationDate);
+        }
+#endif
+    }
     public void ExitGame()
     {
         DataPersistenceManager.Instance.SaveGame();
@@ -108,11 +123,21 @@ public class GameManager : MonoBehaviour
 
     public void StartGameWhenPlayerRevive()
     {
+        StartCoroutine(Counter());
+    }
+
+    IEnumerator Counter()
+    {
+        counter.SetActive(true);
         SoundManager.Instance.PlayClickSound();
         isPlaying = true;
         OnStart?.Invoke();
         UIManager.Instance.StartGame();
         ToggleSpawners(isPlaying);
+
+        yield return new WaitForSecondsRealtime(3);
+
+        counter.SetActive(false);
         Time.timeScale = 1f;
     }
     public void GameOver()

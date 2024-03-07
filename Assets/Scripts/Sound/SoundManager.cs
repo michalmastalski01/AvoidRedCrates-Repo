@@ -30,7 +30,13 @@ public class SoundManager : MonoBehaviour
         timer = footstepPlayOffset;
         audioSource = GetComponent<AudioSource>();
     }
-
+    private void Start()
+    {
+        isMutedSound = !GameManager.instance.GetWallet().isSoundOn;
+        isMutedMusic = !GameManager.instance.GetWallet().isMusicOn;
+        Debug.Log(GameManager.instance.GetWallet().isSoundOn);
+        MuteMusic();
+    }
     public void PlayFootsteps()
     {
         if (!isMutedSound)
@@ -63,12 +69,14 @@ public class SoundManager : MonoBehaviour
     public void ToggleMuteSounds()
     {
         PlayClickSound();
+        GameManager.instance.GetWallet().ToggleSound();
         isMutedSound = !isMutedSound;
         OnMuteSoundChange?.Invoke();
     }
     public void ToggleMuteMusic()
     {
         PlayClickSound();
+        GameManager.instance.GetWallet().ToggleMusic();
         isMutedMusic = !isMutedMusic;
         OnMuteMusicChange?.Invoke();
         MuteMusic();

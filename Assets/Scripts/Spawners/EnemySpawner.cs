@@ -2,19 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Classic,
+    Missile,
+    Quick
+}
+[System.Serializable]
+public class EnemyClass
+{
+    public EnemyType type;
+    public Transform prefab;
+    [Range(1, 100)] public float spawnRate;
+}
+
+
 public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner Instance { get; private set; }
-    [SerializeField] private Transform enemyPrefab;
     [SerializeField] private int amountEnemiesToPool;
     [SerializeField] private float spawningPositionX;
+    [SerializeField] private float spawningPositionY;
     [SerializeField] private float spawningOffsetZ;
     [SerializeField] private float secondsToStartIncreasingSpawningSpeed;
     [SerializeField] private float timeToDecrease;
 
-    [SerializeField] private float spawningRate = 2;
+    [SerializeField] private List<EnemyClass> enemyClassList;
 
-    private List<Transform> pooledEnemies; 
+    private List<float> cumulateProbabilityList = new List<float>();
+
+
+    [SerializeField] private float spawningRate = 2;
 
     private float startingSpawnRate;
     private float gameplayTimer = 0;
@@ -24,16 +42,7 @@ public class EnemySpawner : MonoBehaviour
         Instance = this;
         startingSpawnRate = spawningRate;
     }
-    private void Start()
-    {
-        pooledEnemies = new List<Transform>();
-        for(int i = 0; i < amountEnemiesToPool; i++)
-        {
-            Transform enemyToPool = Instantiate(enemyPrefab);
-            enemyToPool.gameObject.SetActive(false);
-            pooledEnemies.Add(enemyToPool);
-        }
-    }
+
     private void Update()
     {
         gameplayTimer += Time.deltaTime;
@@ -41,15 +50,33 @@ public class EnemySpawner : MonoBehaviour
         spawningRate -= Time.deltaTime;
         if (spawningRate <= 0)
         {
-            SpawnEnemy();
+            PickRandomEnemyAndSpawn();
             spawningRate = startingSpawnRate; 
         }
 
-        if(gameplayTimer > secondsToStartIncreasingSpawningSpeed && startingSpawnRate > 0.1f)
+        if(gameplayTimer > secondsToStartIncreasingSpawningSpeed && startingSpawnRate > 0.2f)
         {
             IncreaseSpawnSpeed();
             gameplayTimer = 0;
         }
+    }
+
+    private void GetCumulateProbability()
+    {
+        float cumulateProbability = 0;
+        cumulateProbabilityList = new List<float>();
+
+        foreach (EnemyClass enemy in enemyClassList)
+        {
+            cumulateProbability += enemy.spawnRate;
+            cumulateProbabilityList.Add(cumulateProbability);
+        }
+
+        if (cumulateProbability > 100)
+        {
+            Debug.LogError("Cumulate probability is above 100%!");
+        }
+
     }
 
     private void IncreaseSpawnSpeed()
@@ -57,25 +84,58 @@ public class EnemySpawner : MonoBehaviour
         startingSpawnRate -= timeToDecrease;
     }
 
-    private void SpawnEnemy()
+    private void PickRandomEnemyAndSpawn()
     {
         float randomX = Random.Range(-spawningPositionX, spawningPositionX);
+        float randomY = Random.Range(-spawningPositionY, spawningPositionY);
 
-        Vector3 spawningPosition = new Vector3(randomX, 0, spawningOffsetZ);
+        GetCumulateProbability();
+        EnemyClass enemyClass = GetRandomEnemyClass();  
 
-        Transform pooledEnemy = GetPooledEnemy();
-        pooledEnemy.position = spawningPosition;
-        pooledEnemy.gameObject.SetActive(true);
-
+        if(enemyClass.type == EnemyType.Classic)
+        {
+            SpawnClassic(enemyClass);
+            return;
+        }
+        if(enemyClass.type == EnemyType.Missile)
+        {
+            SpawnMissile(enemyClass);
+            return;
+        }
+        if (enemyClass.type == EnemyType.Quick)
+        {
+            SpawnClassic(enemyClass);
+            return;
+        }
     }
 
-    private Transform GetPooledEnemy()
+    private void SpawnClassic(EnemyClass enemyClass)
     {
-        for(int i = 0; i < amountEnemiesToPool; i++)
+        float randomX = Random.Range(-spawningPositionX, spawningPositionX);
+        Vector3 spawningPosition = new Vector3(randomX, 0, spawningOffsetZ);
+
+        Transform spawnedEnemy = Instantiate(enemyClass.prefab);
+        spawnedEnemy.position = spawningPosition;
+    }
+    private void SpawnMissile(EnemyClass enemyClass)
+    {
+        float randomX = Random.Range(-spawningPositionX, spawningPositionX);
+        float randomY = Random.Range(-spawningPositionY, spawningPositionY);
+        Vector3 spawningPosition = new Vector3(randomX, 0, randomY);
+
+        Transform spawnedEnemy = Instantiate(enemyClass.prefab);
+        spawnedEnemy.position = spawningPosition;
+    }
+
+    private EnemyClass GetRandomEnemyClass()
+    {
+        int randomNumber = Random.Range(1, 101);
+
+        for (int i = 0; i < enemyClassList.Count; i++)
         {
-            if (!pooledEnemies[i].gameObject.activeInHierarchy)
+            if (randomNumber < cumulateProbabilityList[i])
             {
-                return pooledEnemies[i];
+                return enemyClassList[i];
             }
         }
         return null;

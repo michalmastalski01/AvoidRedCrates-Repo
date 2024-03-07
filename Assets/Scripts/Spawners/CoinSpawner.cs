@@ -22,7 +22,7 @@ public class CoinSpawner : MonoBehaviour
 
     [SerializeField] private float maxHorizontalPosition;
     [SerializeField] private float maxVerticalPosition;
-    [SerializeField] private List<CoinClass> coinSOList;
+    [SerializeField] private List<CoinClass> coinClassList;
 
     private List<float> cumulateProbabilityList = new List<float>();
 
@@ -62,9 +62,9 @@ public class CoinSpawner : MonoBehaviour
         float cumulateProbability = 0;
         cumulateProbabilityList = new List<float>();
 
-        foreach (CoinClass coinSO in coinSOList)
+        foreach (CoinClass coin in coinClassList)
         {
-            cumulateProbability += coinSO.spawnRate;
+            cumulateProbability += coin.spawnRate;
             cumulateProbabilityList.Add(cumulateProbability);
         }
 
@@ -78,11 +78,11 @@ public class CoinSpawner : MonoBehaviour
     {
         int randomNumber = Random.Range(1, 101);
 
-        for(int i = 0; i < coinSOList.Count; i++)
+        for(int i = 0; i < coinClassList.Count; i++)
         {
             if (randomNumber < cumulateProbabilityList[i])
             {
-                return coinSOList[i].prefab;
+                return coinClassList[i].prefab;
             }
         }
         return null;
@@ -90,7 +90,7 @@ public class CoinSpawner : MonoBehaviour
 
     public void ChangeProbability(CoinType coinType, float newProbability)
     {
-        foreach(CoinClass coinSO in coinSOList)
+        foreach(CoinClass coinSO in coinClassList)
         {
             if(coinSO.coinType == coinType)
             {

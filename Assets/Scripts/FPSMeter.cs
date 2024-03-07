@@ -20,7 +20,7 @@ public class FPSMeter : MonoBehaviour
 
         if(rate < 0)
         {
-            fpsMeterText.text = ((int)(1f / Time.deltaTime)).ToString();
+            fpsMeterText.text = ((int)(1f / Time.smoothDeltaTime)).ToString();
             rate = refreshRate;
         }
     }

@@ -83,7 +83,7 @@ public class PowerUpManager : MonoBehaviour
         Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
         foreach(Enemy enemy in enemies)
         {
-            enemy.Disable();
+            enemy.DestroyEnemy();
         }
     }
     private void AttractCoins()

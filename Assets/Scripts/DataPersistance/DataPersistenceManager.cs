@@ -27,10 +27,6 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataPersistenceObjects = FindAllDataPersistentObjects();
         LoadGame();
     }
-    private void Start()
-    {
-      
-    }
 
     public void NewGame()
     {

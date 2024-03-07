@@ -31,6 +31,7 @@ public class ItemUI : MonoBehaviour
             costText.text = skinSO.skinCost.ToString();
         }
         SetRarityColor();
+        HighlightItemUI();
 
         SkinShop.Instance.OnBuySkin += OnBuySkinEvent;
     }

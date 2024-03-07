@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BadWomanSkinSO
   m_EditorClassIdentifier: 
   id: 5
-  skinName: Bad Woman
+  skinName: Cowgirl
   skinPrefab: {fileID: 3330438578250355898, guid: fc3e634fa2d7440468ba73954b7abbd0, type: 3}
   skinCost: 300
-  rarityLevel: 2
+  rarityLevel: 1

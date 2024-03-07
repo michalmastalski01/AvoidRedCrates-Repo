@@ -57,6 +57,15 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleAnimations();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.GameOver();
+            other.gameObject.SetActive(false);
+        }
+    }
+
     private void HandleAnimations()
     {
         if (moveDirection == Vector3.zero)
@@ -117,7 +126,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 GetClampPlayerPosition()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);   
-        Debug.Log(mousePosition);
 
         return new Vector3(Mathf.Clamp(transform.position.x, -maxHorizontalPosition, maxHorizontalPosition), 0, Mathf.Clamp(transform.position.z, -maxVerticalPosition, maxVerticalPosition));
     }

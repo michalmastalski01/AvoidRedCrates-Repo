@@ -43,6 +43,7 @@ public class SkinShopUI : ShopUI
 
     private void Start()
     {
+        DestroyAndSpawnNewPreviewSkin();
         boughtSkinScreen.SetActive(false);
         boughtSkinScreen.transform.localScale = Vector3.zero;
         isPlayerBoughtSkin = false;

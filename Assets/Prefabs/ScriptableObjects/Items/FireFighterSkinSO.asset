@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa71f0a7ccc8a2042afdbcac6183f0f4, type: 3}
+  m_Name: FireFighterSkinSO
+  m_EditorClassIdentifier: 
+  id: 9
+  skinName: Firefigher
+  skinPrefab: {fileID: 7818209671670290038, guid: c77607c36872018419cb8c176e6ea38e, type: 3}
+  skinCost: 750
+  rarityLevel: 2

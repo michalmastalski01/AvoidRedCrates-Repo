@@ -11,6 +11,8 @@ public class GameData
     public List<int> boughtUpgradeIds;
     public int currentSkinId;
     public Quality currentQuality;
+    public bool isMusicOn;
+    public bool isSoundOn;
 
     public GameData(int coins, int highScore, int currentSkinId, List<int> boughtSkinIds, List<int> boughtUpgradeIds)
     {
