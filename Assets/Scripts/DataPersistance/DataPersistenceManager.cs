@@ -30,6 +30,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        TutorialHandler.Instance.StartTutorial();
         gameData = new GameData(0, 0, 0, new List<int>(), new List<int>());
     }
     private List<IDataPersistence> FindAllDataPersistentObjects()

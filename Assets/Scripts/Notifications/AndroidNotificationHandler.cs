@@ -17,6 +17,8 @@ public class AndroidNotificationHandler : MonoBehaviour
 
     public void ScheduleNotification(DateTime dateTime)
     {
+        AndroidNotificationCenter.CancelAllDisplayedNotifications();
+
         AndroidNotificationChannel notificationChannel = new AndroidNotificationChannel
         {
             Id = ChannelId,
@@ -36,7 +38,13 @@ public class AndroidNotificationHandler : MonoBehaviour
             FireTime = dateTime
         };
 
-        AndroidNotificationCenter.SendNotification(notification, ChannelId);
+        int id = AndroidNotificationCenter.SendNotification(notification, ChannelId);
+
+        if(AndroidNotificationCenter.CheckScheduledNotificationStatus(id) == NotificationStatus.Scheduled)
+        {
+            AndroidNotificationCenter.CancelAllNotifications();
+            AndroidNotificationCenter.SendNotification(notification, ChannelId);
+        }
     }
 #endif
 }

@@ -44,12 +44,10 @@ public class UnityAds : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        Debug.Log("Clicking ad button!");
         IronSource.Agent.loadRewardedVideo();
 
         if (IronSource.Agent.isRewardedVideoAvailable())
         {
-            Debug.Log("Ad loaded and now is showing!");
             IronSource.Agent.showRewardedVideo();
         }
     }

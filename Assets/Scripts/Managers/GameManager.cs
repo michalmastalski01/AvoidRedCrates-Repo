@@ -98,9 +98,6 @@ public class GameManager : MonoBehaviour
         {
             DateTime notificationDate = DateTime.Now.AddHours(1);
             AndroidNotificationHandler.Instance.ScheduleNotification(notificationDate);
-
-            notificationDate = DateTime.Now.AddHours(12);
-            AndroidNotificationHandler.Instance.ScheduleNotification(notificationDate);
         }
 #endif
     }
@@ -129,6 +126,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Counter()
     {
         counter.SetActive(true);
+        counter.GetComponent<Animator>().SetTrigger("Trigger");
         SoundManager.Instance.PlayClickSound();
         isPlaying = true;
         OnStart?.Invoke();
@@ -137,7 +135,6 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(3);
 
-        counter.SetActive(false);
         Time.timeScale = 1f;
     }
     public void GameOver()
